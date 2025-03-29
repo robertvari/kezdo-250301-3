@@ -39,9 +39,11 @@ class MagicNumber:
         self.clear_screen()
 
         if self.computer.magic_number == self.player.magic_number:
-            print(f"You win. My number was {self.computer.magic_number}")
+            print(f"You won. My number was {self.computer.magic_number}")
+            self.player.give_credits(10)
         else:
             print("You lost this round :(")
+            self.player.take_credits(10)
 
         if self.player.ask("Do you want to play again?"):
             self.game_loop()
@@ -69,6 +71,14 @@ class Player:
     def __init__(self):
         self.magic_number = None
         self.credits = 100
+    
+    def give_credits(self, credits):
+        self.credits += credits
+        print(f"You won {credits}. Now you have {self.credits}")
+    
+    def take_credits(self, credits):
+        self.credits -= credits
+        print(f"You lost {credits}. Now you have {self.credits}")
 
     def think_number(self):
         result = input("What is your guess? ")
