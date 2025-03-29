@@ -20,7 +20,33 @@ class MagicNumber:
     
     def game_loop(self):
         self.clear_screen()
-        print("Start game...")
+        try_count = 3
+        print(f"You have {try_count} tries.")
+
+        self.computer.think_number()
+        self.player.think_number()
+
+        while self.computer.magic_number != self.player.magic_number:
+            try_count -= 1
+            if try_count == 0:
+                break
+            self.clear_screen()
+
+            print(f"Wrong guess! You have {try_count} tries left.")
+            self.player.think_number()
+
+        # End game condition
+        self.clear_screen()
+
+        if self.computer.magic_number == self.player.magic_number:
+            print(f"You win. My number was {self.computer.magic_number}")
+        else:
+            print("You lost this round :(")
+
+        if self.player.ask("Do you want to play again?"):
+            self.game_loop()
+        else:
+            self.exit_game()
     
     def exit_game(self):
         self.clear_screen()
