@@ -62,11 +62,14 @@ class MagicNumber:
     def intro(self):
         print("-"*50, "The Magic Number Game", "-"*50)
         print(f"I think of a number between {self.computer.min_number} and {self.computer.max_number}. Can you guess it?")
+        print(f"You start with {self.player.credits} credits. On each round I give you 10 credits.")
+        print("If you lost all your credits the game ends.")
 
 class Player:
     def __init__(self):
         self.magic_number = None
-    
+        self.credits = 100
+
     def think_number(self):
         result = input("What is your guess? ")
 
@@ -98,7 +101,7 @@ class Computer:
         self.magic_number = None
     
     def think_number(self):
-        self.magic_number = random.randint(self.min_number, self.magic_number)
+        self.magic_number = random.randint(self.min_number, self.max_number)
 
 
 MagicNumber()
