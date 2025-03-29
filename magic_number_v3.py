@@ -17,7 +17,8 @@ class MagicNumber:
             self.game_loop()
         self.exit_game()
 
-    def clear_screen(self):
+    @staticmethod
+    def clear_screen():
         if os.name == "nt":
             os.system("cls")
         else:
@@ -34,9 +35,11 @@ class Player:
         valid_characters = "yn"
 
         while result not in valid_characters:
-            clear_screen()
+            MagicNumber.clear_screen()
             print("Wrong answer. Only use y/n.")
             result = input(f"{question} (y/n)")
+        
+        return result == "y"
 
 class Computer:
     def __init__(self):
