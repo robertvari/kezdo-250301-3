@@ -45,13 +45,19 @@ class MagicNumber:
             print("You lost this round :(")
             self.player.take_credits(10)
 
-        if self.player.ask("Do you want to play again?"):
-            self.game_loop()
+        if self.player.credits > 0:
+            if self.player.ask("Do you want to play again?"):
+                self.game_loop()
+            else:
+                self.exit_game()
         else:
+            print("You lost all your credits. The game ends.")
+            time.sleep(5)
             self.exit_game()
     
     def exit_game(self):
         self.clear_screen()
+        print(f"You have {self.player.credits} credits.")
         print("Thank you for playing my game :))) See you next time!")
 
     @staticmethod
@@ -74,11 +80,11 @@ class Player:
     
     def give_credits(self, credits):
         self.credits += credits
-        print(f"You won {credits}. Now you have {self.credits}")
+        print(f"You won {credits} credits. Now you have {self.credits} credits")
     
     def take_credits(self, credits):
         self.credits -= credits
-        print(f"You lost {credits}. Now you have {self.credits}")
+        print(f"You lost {credits} credits. Now you have {self.credits} credits")
 
     def think_number(self):
         result = input("What is your guess? ")
