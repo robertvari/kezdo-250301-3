@@ -6,6 +6,11 @@ class Person:
     @property
     def full_name(self):
         return f"{self.__first_name} {self.__last_name}"
+    
+    def get_full_name(self):
+        return f"{self.__first_name} {self.__last_name}"
+
 
 csaba = Person("Kiss", "Csaba")
 print(csaba.full_name)
+print(csaba.get_full_name())
