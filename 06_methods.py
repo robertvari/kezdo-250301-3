@@ -23,5 +23,3 @@ csaba = Person("Csaba")
 
 tamas.say_hello()
 csaba.say_hello()
-
-tamas.
