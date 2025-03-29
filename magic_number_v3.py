@@ -16,6 +16,13 @@ class MagicNumber:
         if self.player.ask("Are you ready?"):
             self.game_loop()
         self.exit_game()
+    
+    def game_loop(self):
+        print("Start game...")
+    
+    def exit_game(self):
+        self.clear_screen()
+        print("Thank you for playing my game :))) See you next time!")
 
     @staticmethod
     def clear_screen():
