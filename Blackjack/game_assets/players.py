@@ -76,7 +76,7 @@ class Player(Player_BASE):
 
         while self.playing:
             if self.hand_value > 21:
-                print("Your hand alue is greater than 21")
+                print("Your hand value is greater than 21")
                 self.playing = False
                 break
 
@@ -98,7 +98,14 @@ if __name__ == "__main__":
 
     deck = Deck()
 
+    computer = Computer()
     player = Player()
+
     player.create()
+    computer.create()
+    
     player.draw(deck)
+    computer.draw(deck)
+
     player.show_hand()
+    computer.show_hand()
