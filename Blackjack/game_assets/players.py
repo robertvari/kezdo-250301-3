@@ -2,13 +2,13 @@ import random
 
 class Player_BASE:
     def __init__(self):
-        self.__name = None
+        self._name = None
         self.__credits = 0
         self.__hand = []
         self.__playing = True
 
     def create(self):
-        self.__name = self.get_random_name()
+        self._name = self.get_random_name()
         self.__credits = random.randint(10, 100)
     
     @staticmethod
@@ -19,10 +19,12 @@ class Player_BASE:
         return f"{random.choice(first_names)} {random.choice(last_names)}"
 
     def __str__(self):
-        return f"Name: {self.__name} Credits: {self.__credits}"
+        return f"Name: {self._name} Credits: {self.__credits}"
 
 class Player(Player_BASE):
-    pass
+    def create(self):
+        super().create()
+        self._name = "Robert Vari"
 
 class Computer(Player_BASE):
     pass
