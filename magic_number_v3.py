@@ -73,9 +73,21 @@ class MagicNumber:
         print(f"You start with {self.player.credits} credits. On each round I give you 10 credits.")
         print("If you lost all your credits the game ends.")
 
-class Player:
+
+class Player_BASE:
     def __init__(self):
+        self.min_number = 1
+        self.max_number = 10
         self.magic_number = None
+
+    def think_number(self):
+        self.magic_number = random.randint(self.min_number, self.max_number)
+
+class Player(Player_BASE):
+    def __init__(self):
+        super().__init__()
+
+        # extend BASE with credits
         self.credits = 100
     
     def give_credits(self, credits):
@@ -86,8 +98,9 @@ class Player:
         self.credits -= credits
         print(f"You lost {credits} credits. Now you have {self.credits} credits")
 
+    # full override on BASE think_number
     def think_number(self):
-        result = input("What is your guess? ")
+        result = input(f"What is your guess between {self.min_number} and {self.magic_number}? ")
 
         valid_numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
@@ -110,14 +123,8 @@ class Player:
         
         return result == "y"
 
-class Computer:
-    def __init__(self):
-        self.min_number = 1
-        self.max_number = 10
-        self.magic_number = None
-    
-    def think_number(self):
-        self.magic_number = random.randint(self.min_number, self.max_number)
+class Computer(Player_BASE):
+    pass
 
 
 MagicNumber()
