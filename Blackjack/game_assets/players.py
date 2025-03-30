@@ -31,6 +31,13 @@ class Player_BASE:
         
         self.__hand.append(card)
 
+    def init_hand(self, deck):
+        self.__hand.clear()
+        self.__playing = True
+
+        self.add_card(deck.draw())
+        self.add_card(deck.draw())
+
     @staticmethod
     def get_random_name():
         first_names = ["Liam", "Emma", "Noah", "Olivia", "Ethan", "Ava", "James", "Sophia", "Benjamin", "Mia"]
@@ -103,6 +110,9 @@ if __name__ == "__main__":
 
     player.create()
     computer.create()
+
+    player.init_hand(deck)
+    computer.init_hand(deck)
     
     player.draw(deck)
     computer.draw(deck)
