@@ -26,6 +26,7 @@ class Card:
 class Deck:
     def __init__(self):
         self.__cards = []
+        self.create()
 
     def create(self):
         self.__cards.clear()
@@ -54,6 +55,9 @@ class Deck:
 
         random.shuffle(self.__cards)
 
+    def draw(self):
+        return self.__cards.pop(0)
+
     def show_cards(self):
         print(self.__cards)
 
@@ -63,5 +67,11 @@ if __name__ == "__main__":
     # ability to draw a card
 
     deck = Deck()
-    deck.create()
-    deck.show_cards()
+
+    cards = []
+
+    for i in range(3):
+        new_card = deck.draw()
+        cards.append(new_card)
+
+    print(cards)
