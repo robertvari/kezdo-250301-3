@@ -28,7 +28,16 @@ class Player_BASE:
 
     @property
     def hand(self):
-        return self.__hand
+        return tuple(self.__hand)
+    
+    @property
+    def playing(self):
+        return self.__playing
+    
+    @playing.setter
+    def playing(self, new_value):
+        assert isinstance(new_value, bool), "Value must be either True or False"
+        self.__playing = new_value
 
     def __str__(self):
         return f"Name: {self._name} Credits: {self.__credits}"
@@ -49,5 +58,6 @@ if __name__ == "__main__":
     player.create()
     computer.create()
 
-    print(player.credits)
-    print(computer.credits)
+    print(player.playing)
+    player.playing = False
+    print(player.playing)
