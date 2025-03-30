@@ -18,6 +18,18 @@ class Player_BASE:
 
         return f"{random.choice(first_names)} {random.choice(last_names)}"
 
+    @property
+    def name(self):
+        return self._name
+    
+    @property
+    def credits(self):
+        return self.__credits
+
+    @property
+    def hand(self):
+        return self.__hand
+
     def __str__(self):
         return f"Name: {self._name} Credits: {self.__credits}"
 
@@ -37,5 +49,5 @@ if __name__ == "__main__":
     player.create()
     computer.create()
 
-    print(player)
-    print(computer)
+    print(player.credits)
+    print(computer.credits)
