@@ -3,12 +3,13 @@ import random
 class Player_BASE:
     def __init__(self):
         self.__name = None
-        self.__credits = random.randint(10, 100)
+        self.__credits = 0
         self.__hand = []
         self.__playing = True
 
     def create(self):
         self.__name = self.get_random_name()
+        self.__credits = random.randint(10, 100)
     
     @staticmethod
     def get_random_name():
