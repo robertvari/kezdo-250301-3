@@ -31,5 +31,8 @@ if __name__ == "__main__":
     player = Player()
     computer = Computer()
 
+    player.create()
+    computer.create()
+
     print(player)
     print(computer)
