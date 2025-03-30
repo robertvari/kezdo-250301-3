@@ -11,6 +11,10 @@ class Card:
     def name(self):
         return self.__name
 
+    def change_value(self):
+        if self.__value == 11:
+            self.__value = 1
+
     def __str__(self):
         return f"Name: {self.__name} Value: {self.__value}"
 
@@ -21,6 +25,7 @@ if __name__ == "__main__":
     card1 = Card("Club Ace", 11)
     card2 = Card("Diamon King", 10)
     card3 = Card("Spade 3", 3)
-    
-    deck = [card1, card2, card3]
-    print(card1.name)
+
+    print(card2)
+    card2.change_value()
+    print(card2)
