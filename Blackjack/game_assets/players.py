@@ -17,16 +17,19 @@ class Player_BASE:
                 print(f"{self.name} draws card...")
                 time.sleep(2)
                 new_card = deck.draw()
-                if self.hand_value > 10 and new_card.value == 11:
-                    new_card.change_calue()
-
-                self.__hand.append(new_card)
+                self.add_card(new_card)
             else:
                 print(f"{self.name} finishes drawing")
                 self.playing = False
 
     def show_hand(self):
         print(self.__hand, f"Hand value: {self.hand_value}")
+
+    def add_card(self, card):
+        if self.hand_value > 10 and card.value == 11:
+            card.change_value()
+        
+        self.__hand.append(card)
 
     @staticmethod
     def get_random_name():
@@ -68,6 +71,24 @@ class Player(Player_BASE):
         super().create()
         self._name = "Robert Vari"
 
+    def draw(self, deck):
+        print(f"This is your turn {self.name}")
+
+        while self.playing:
+            if self.hand_value > 21:
+                print("Your hand alue is greater than 21")
+                self.playing = False
+                break
+
+            self.show_hand()
+            response = input("Do you want to draw a card? (y/n)")
+            if response == "y":
+                new_card = deck.draw()
+                print(f"You card: {new_card}")
+                self.add_card(new_card)
+            else:
+                self.playing = False
+
 class Computer(Player_BASE):
     pass
 
@@ -77,7 +98,7 @@ if __name__ == "__main__":
 
     deck = Deck()
 
-    computer = Computer()
-    computer.create()
-    computer.draw(deck)
-    computer.show_hand()
+    player = Player()
+    player.create()
+    player.draw(deck)
+    player.show_hand()
