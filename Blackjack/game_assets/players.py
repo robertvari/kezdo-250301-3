@@ -7,6 +7,8 @@ class Player_BASE:
         self.__hand = []
         self.__playing = True
 
+        self.create()
+
     def create(self):
         self._name = self.get_random_name()
         self.__credits = random.randint(10, 100)
@@ -76,7 +78,7 @@ class Player_BASE:
 class Player(Player_BASE):
     def create(self):
         super().create()
-        self._name = "Robert Vari"
+        self._name = input("What is your name? ")
 
     def draw(self, deck):
         print(f"This is your turn {self.name}")
@@ -107,9 +109,6 @@ if __name__ == "__main__":
 
     computer = Computer()
     player = Player()
-
-    player.create()
-    computer.create()
 
     player.init_hand(deck)
     computer.init_hand(deck)

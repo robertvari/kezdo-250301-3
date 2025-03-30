@@ -6,9 +6,7 @@ from game_assets.players import Player, Computer
 class Blackjack:
     def __init__(self):
         self.__deck = Deck()
-        self.__player = Player()
         self.__player_list = [
-            self.__player,
             Computer(),
             Computer(),
             Computer()
@@ -17,9 +15,10 @@ class Blackjack:
         self.clear_screen()
         self.intro()
 
-        # generate names and credits for players
-        for p in self.__player_list:
-            p.create()
+        self.__player = Player()
+        self.__player_list.insert(0, self.__player)
+
+        self.game_loop()
 
     def game_loop(self):
         self.clear_screen()
@@ -66,6 +65,5 @@ class Blackjack:
         print("Wellcome to Blackjack!")
         print("Get as close to 21 as possible without going over. Beat the others.")
         print("If your hand is higher than the others without going over 21 → You win.")
-        input("Press Enter to continue...")
 
 Blackjack()
