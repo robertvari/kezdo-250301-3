@@ -100,7 +100,7 @@ class Player(Player_BASE):
 
     # full override on BASE think_number
     def think_number(self):
-        result = input(f"What is your guess between {self.min_number} and {self.magic_number}? ")
+        result = input(f"What is your guess between {self.min_number} and {self.max_number}? ")
 
         valid_numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
