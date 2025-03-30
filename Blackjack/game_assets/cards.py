@@ -21,11 +21,37 @@ class Card:
     def __repr__(self):
         return self.__name
 
-if __name__ == "__main__":
-    card1 = Card("Club Ace", 11)
-    card2 = Card("Diamon King", 10)
-    card3 = Card("Spade 3", 3)
+class Deck:
+    def __init__(self):
+        self.__cards = []
 
-    print(card2)
-    card2.change_value()
-    print(card2)
+    def create(self):
+        cards = [
+            ["2", 2],
+            ["3", 3],
+            ["4", 4],
+            ["5", 5],
+            ["6", 6],
+            ["7", 7],
+            ["8", 8],
+            ["9", 9],
+            ["10", 10],
+            ["King", 10],
+            ["Queen", 10],
+            ["Jack", 10],
+            ["Ace", 11]
+        ]
+
+        suits = ["Heart", "Club", "Diamond", "Spade"]
+
+    def show_cards(self):
+        print(self.__cards)
+
+if __name__ == "__main__":
+    # creates a shuffled deck on instance
+    # refresh deck on new round
+    # ability to draw a card
+
+    deck = Deck()
+    deck.create()
+    deck.show_cards()
